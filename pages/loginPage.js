@@ -9,15 +9,15 @@ export class loginPage {
     this.page = page;
 
     // UI locators – adjust if your DOM differs
-    this.usernameInput = page.getByLabel('Username');
-    this.passwordInput = page.getByLabel('Password');
-    this.loginButton   = page.getByRole('button', { name: 'Login' });
+    this.usernameInput = page.getByRole('textbox', {name: 'Username'});
+    this.passwordInput = page.getByRole('textbox', {name: 'Password'});
+    this.loginButton   = page.getByRole('button', {name: 'Login'});
 
     // Adjust this selector to whatever the message element is on the page
-    this.flashMessage  = page.locator('.flash, .alert, #flash'); 
+    this.flashMessage  = page.locator('div#flash-message'); 
 
     // On the secure page after successful login
-    this.logoutButton  = page.getByRole('button', { name: 'Logout' });
+    this.logoutButton  = page.getByRole('link', { name: 'Logout' });
     this.secureHeader  = page.getByRole('heading', { name: /secure area/i });
   }
 

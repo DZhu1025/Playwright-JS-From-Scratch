@@ -37,14 +37,14 @@ test.describe('ExpandTesting - Login', () => {
       const login = new loginPage(page);
 
       await login.login('wrongUser', 'SuperSecretPassword!');
-      await login.expectErrorMessage('Invalid username.');
+      await login.expectErrorMessage('Your password is invalid!');
     });
 
     test('ET - Invalid password shows correct error and stays on login', async ({ page }) => {
       const login = new loginPage(page);
 
       await login.login('practice', 'WrongPassword');
-      await login.expectErrorMessage('Invalid password.');
+      await login.expectErrorMessage('Your password is invalid!');
     });
 
     test('ET - Login via Enter key on password field', async ({ page }) => {
@@ -87,11 +87,6 @@ test.describe('ExpandTesting - Login', () => {
     });
 
     test('ET - Login API /POST - successful login returns token', async ({ request }) => {
-      test.skip(
-        !validEmail || !validPassword,
-        'Set NOTES_API_EMAIL and NOTES_API_PASSWORD env vars to a valid Notes user to run this test.'
-      );
-
       const resp = await request.post(`${NOTES_API_BASE_URL}/users/login`, {
         form: {
           email: validEmail,
