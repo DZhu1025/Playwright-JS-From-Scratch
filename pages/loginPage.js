@@ -23,7 +23,7 @@ export class loginPage {
 
   async goto() {
     // If you’ve set baseURL in Playwright config, you can change this to '/login'
-    await this.page.goto('https://practice.expandtesting.com/login');
+    await this.page.goto('/login');
   }
 
   async assertOnLoginPage() {
